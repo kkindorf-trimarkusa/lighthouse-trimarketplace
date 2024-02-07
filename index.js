@@ -31,7 +31,12 @@ async function asyncCall() {
     let initialPageresult = await lighthouse(siteUrl, lhOpts, undefined, page);
     const lhr = initialPageresult.report;
     fs.writeFile(`login.html`, lhr, err => {
-        if (err) throw err;
+            if (err) {
+                console.error(err);
+          } 
+              else {
+               console.log(`login.html written`)
+          }
     });
     const selector = '.onpagelogin form .login-btn';
     const btn = await page.$(selector)
