@@ -66,62 +66,11 @@ async function asyncCall() {
         });
     }
 
-
-
-    // // access history and evaluate last url of page
-    // const session = await page.target().createCDPSession();
-    // const history = await session.send("Page.getNavigationHistory");
-    // const last = history.entries[history.entries.length - 2];
-
-    // // create a new page and go back
-    // // important: the page created here does not share the history
-    // const backPage = await browser.newPage();
-    // await backPage.goto(last.url);
-
-    // // see results
-    // await page.screenshot({ path: "page.png" });
-    // await backPage.screenshot({ path: "back-page.png" });
-
-    // uncomment if you use headless chrome
-    // await browser.close();
 }
 
 
 asyncCall();
 
 
-
-
-
-
-
-
-// const browser = await puppeteer.launch({
-//     // Set to false if you want to see the script in action.
-//     headless: 'new',
-//     slowMo: 50,
-// });
-// const page = await browser.newPage();
-// console.log(browser)
-
-// await page.goto(siteUrl);
-
-// console.log('Starting login, entering username and password...');
-// const emailInput = await page.$('input.username-input');
-// await emailInput.type('1_pw_approver1@trimarkusa.com');
-// const passwordInput = await page.$('input.password-input');
-// await passwordInput.type('Welcome1$');
-// await Promise.all([
-//     page.$eval('.login-form', form => form.submit()),
-//     page.waitForNavigation(),
-// ]);
-
-// console.log('finished login');
-// console.log(page.url())
-
-// await Promise.all([
-//     page.goto("https://qa.trimarketplace.com/my-account"),
-//     page.waitForNavigation()
-// ]);
 
 
