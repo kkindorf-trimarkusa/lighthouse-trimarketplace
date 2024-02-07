@@ -16,3 +16,5 @@ jobs:
           node-version: '20.x'
       - name: Install dependencies
         run: npm install
+      - name: run app
+        run: node index.js
