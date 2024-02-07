@@ -74,13 +74,15 @@ async function asyncCall() {
               else {
                console.log(`${urlstoTest[i].pageName}.html written`)
                writtenFilesTotal++
+               console.log(writtenFilesTotal)
           }
         });
         if (writtenFilesTotal === urlstoTest.length) {
             console.log('all lighthouse reports written')
             process.exit();
-          
-            
+        }
+        else {
+            console.log(writtenFilesTotal)
         }
     }
 
