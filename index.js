@@ -62,7 +62,12 @@ async function asyncCall() {
         const result = await lighthouse(urlstoTest[i].url, lhOpts, undefined, page);
         const lhr = result.report;
         fs.writeFile(`${urlstoTest[i].pageName}.html`, lhr, err => {
-            if (err) throw err;
+              if (err) {
+                console.error(err);
+          } 
+              else {
+               console.log(`${urlstoTest[i].pageName}.html`)
+          }
         });
     }
 
