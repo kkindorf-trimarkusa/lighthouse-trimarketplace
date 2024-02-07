@@ -77,9 +77,10 @@ async function asyncCall() {
           }
         });
         if (writtenFilesTotal === urlstoTest.length) {
-            if (browser)
+            if (browser) {
                 await browser.close();
             }
+            
         }
     }
 
