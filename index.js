@@ -77,10 +77,9 @@ async function asyncCall() {
           }
         });
         if (writtenFilesTotal === urlstoTest.length) {
-            if (browser) {
-                await browser.close();
-                return;
-            }
+            console.log('all lighthouse reports written')
+            process.exit();
+          
             
         }
     }
