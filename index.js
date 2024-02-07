@@ -66,7 +66,7 @@ async function asyncCall() {
                 console.error(err);
           } 
               else {
-               console.log(`${urlstoTest[i].pageName}.html`)
+               console.log(`${urlstoTest[i].pageName}.html written`)
           }
         });
     }
