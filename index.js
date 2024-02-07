@@ -20,7 +20,7 @@ async function asyncCall() {
         disableStorageReset: true
     }
 
-    const browser = await puppeteer.launch({ headless: false });
+    const browser = await puppeteer.launch({ headless: true });
     const page = await browser.newPage();
     await page.goto(siteUrl, {
         waitUntil: ['load']
