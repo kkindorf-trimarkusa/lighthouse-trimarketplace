@@ -9,7 +9,7 @@ let siteUrl = 'https://qa.trimarketplace.com';
 async function asyncCall() {
     const urlObj = new URL(siteUrl);
     let dirName = urlObj.host;
-    const writtenFilesTotal = 0;
+    let writtenFilesTotal = 0;
     if (urlObj.pathname !== "/") {
         dirName = dirName + urlObj.pathname.replace(/\//g, "_");
     }
@@ -79,6 +79,7 @@ async function asyncCall() {
         if (writtenFilesTotal === urlstoTest.length) {
             if (browser) {
                 await browser.close();
+                return;
             }
             
         }
