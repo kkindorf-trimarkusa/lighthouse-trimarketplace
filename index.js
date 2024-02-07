@@ -77,12 +77,12 @@ async function asyncCall() {
                console.log(writtenFilesTotal)
           }
         });
-        if (writtenFilesTotal === urlstoTest.length) {
+        if(urlstoTest.length - 1 === i) {
             console.log('all lighthouse reports written')
             process.exit();
         }
         else {
-            console.log(writtenFilesTotal)
+            console.log(`not done yet ${writtenFilesTotal}`)
         }
     }
 
