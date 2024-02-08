@@ -67,12 +67,12 @@ async function asyncCall() {
         await page.goto(urlstoTest[i].url)
         const result = await lighthouse(urlstoTest[i].url, lhOpts, undefined, page);
         const lhr = result.report;
-        fs.writeFile(`${dirName}+'/'+${urlstoTest[i].pageName}+ '_' +${underscoreDate}.html`, lhr, err => {
+        fs.writeFile(`${dirName}/${urlstoTest[i].pageName}_${underscoreDate}.html`, lhr, err => {
             if (err) {
                 console.error(err);
             }
             else {
-                console.log(`${dirName} + '/' + ${urlstoTest[i].pageName}.html written`)
+                console.log(`${dirName}/${urlstoTest[i].pageName}.html written`)
 
             }
         });
