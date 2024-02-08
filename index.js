@@ -5,7 +5,11 @@ let siteUrl = 'https://qa.trimarketplace.com';
 
 async function asyncCall() {
     const urlObj = new URL(siteUrl);
-    let dirName = urlObj.host;
+    let date = new Date;
+    let formattedDate = date.toLocaleString('en-US');
+    let directoryDate = formattedDate.substring(0, formattedDate.indexOf(","));
+    let underscoreDate = directoryDate.replace(/\//g, '_');
+    let dirName = urlObj.host + '_' + underscoreDate;
     if (urlObj.pathname !== "/") {
         dirName = dirName + urlObj.pathname.replace(/\//g, "_");
     }
@@ -13,6 +17,7 @@ async function asyncCall() {
         fs.mkdirSync(dirName);
     }
     let lhOpts = {
+        emulatedFormFactor: 'desktop',
         output: 'html',
         disableStorageReset: true
     }
@@ -32,7 +37,7 @@ async function asyncCall() {
             console.error(err);
         }
         else {
-            console.log(`login.html written`)
+            console.log(`${dirName} + '/' + login.html written`)
         }
     });
     const selector = '.onpagelogin form .login-btn';
@@ -62,12 +67,12 @@ async function asyncCall() {
         await page.goto(urlstoTest[i].url)
         const result = await lighthouse(urlstoTest[i].url, lhOpts, undefined, page);
         const lhr = result.report;
-        fs.writeFile(`${urlstoTest[i].pageName}.html`, lhr, err => {
+        fs.writeFile(`${dirName}+'/'+${urlstoTest[i].pageName}+ '_' +${underscoreDate}.html`, lhr, err => {
             if (err) {
                 console.error(err);
             }
             else {
-                console.log(`${urlstoTest[i].pageName}.html written`)
+                console.log(`${dirName} + '/' + ${urlstoTest[i].pageName}.html written`)
 
             }
         });
