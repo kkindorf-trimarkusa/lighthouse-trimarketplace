@@ -73,13 +73,14 @@ async function asyncCall() {
             }
             else {
                 console.log(`${dirName}/${urlstoTest[i].pageName}.html written`)
+                if (urlstoTest.length - 1 === i) {
+                    console.log('all lighthouse reports written')
+                    process.exit();
+                }
 
             }
         });
-        if (urlstoTest.length - 1 === i) {
-            console.log('all lighthouse reports written')
-            process.exit();
-        }
+
     }
 
 }
