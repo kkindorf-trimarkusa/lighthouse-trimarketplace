@@ -1,15 +1,11 @@
 import lighthouse from 'lighthouse';
-import { launch } from 'chrome-launcher';
-import url from 'url';
 import fs from 'fs';
 import puppeteer from 'puppeteer';
-
 let siteUrl = 'https://qa.trimarketplace.com';
 
 async function asyncCall() {
     const urlObj = new URL(siteUrl);
     let dirName = urlObj.host;
-    let writtenFilesTotal = 0;
     if (urlObj.pathname !== "/") {
         dirName = dirName + urlObj.pathname.replace(/\//g, "_");
     }
@@ -32,17 +28,16 @@ async function asyncCall() {
     let initialPageresult = await lighthouse(siteUrl, lhOpts, undefined, page);
     const lhr = initialPageresult.report;
     fs.writeFile(`login.html`, lhr, err => {
-            if (err) {
-                console.error(err);
-          } 
-              else {
-               console.log(`login.html written`)
-          }
+        if (err) {
+            console.error(err);
+        }
+        else {
+            console.log(`login.html written`)
+        }
     });
     const selector = '.onpagelogin form .login-btn';
     const btn = await page.$(selector)
     const present = await btn.isVisible()
-    console.log(present)
 
 
     //start authenticating to log into the site
@@ -68,16 +63,15 @@ async function asyncCall() {
         const result = await lighthouse(urlstoTest[i].url, lhOpts, undefined, page);
         const lhr = result.report;
         fs.writeFile(`${urlstoTest[i].pageName}.html`, lhr, err => {
-              if (err) {
+            if (err) {
                 console.error(err);
-          } 
-              else {
-               console.log(`${urlstoTest[i].pageName}.html written`)
-               writtenFilesTotal++
-               console.log(writtenFilesTotal)
-          }
+            }
+            else {
+                console.log(`${urlstoTest[i].pageName}.html written`)
+
+            }
         });
-        if(urlstoTest.length - 1 === i) {
+        if (urlstoTest.length - 1 === i) {
             console.log('all lighthouse reports written')
             process.exit();
         }

@@ -1,5 +1,5 @@
 
-name: Node.js CI
+name: Run lighthouse script and push
 
 on:
   push:
@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with: 
+          token: ${{secrets.PERSONAL_ACCESS_TOKEN}}
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
@@ -21,13 +23,12 @@ jobs:
 
       - name: commit to main
         run: |
-          # setup the username and email. I tend to use 'GitHub Actions Bot' with no email by default
-          git config user.name "GitHub Actions Bot"
-          git config user.email "<>"
+          git config user.name ${{ secrets.USERNAME }}
+          git config user.email "kkindorf@trimarkusa.com"
 
       - name: commit
         run: |
           # Stage the file, commit and push
           git add .
-          git commit -m "new reports commit"
+          git commit -m "new reports generated"
           git push origin main
