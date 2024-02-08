@@ -75,9 +75,6 @@ async function asyncCall() {
             console.log('all lighthouse reports written')
             process.exit();
         }
-        else {
-            console.log(`not done yet ${writtenFilesTotal}`)
-        }
     }
 
 }
