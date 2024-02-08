@@ -37,7 +37,7 @@ async function asyncCall() {
             console.error(err);
         }
         else {
-            console.log(`${dirName} + '/' + login.html written`)
+            console.log(`${dirName}/login.html written`)
         }
     });
     const selector = '.onpagelogin form .login-btn';
@@ -67,7 +67,7 @@ async function asyncCall() {
         await page.goto(urlstoTest[i].url)
         const result = await lighthouse(urlstoTest[i].url, lhOpts, undefined, page);
         const lhr = result.report;
-        fs.writeFile(`${dirName}/${urlstoTest[i].pageName}_${underscoreDate}.html`, lhr, err => {
+        fs.writeFile(`${dirName}/${urlstoTest[i].pageName}.html`, lhr, err => {
             if (err) {
                 console.error(err);
             }
