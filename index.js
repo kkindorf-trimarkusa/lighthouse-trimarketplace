@@ -2,14 +2,12 @@ import lighthouse from 'lighthouse';
 import fs from 'fs';
 import puppeteer from 'puppeteer';
 let siteUrl = 'https://qa.trimarketplace.com';
+import config from './config/desktop-config.js';
+import buildHtml from './build-html.js';
 
 async function asyncCall() {
     const urlObj = new URL(siteUrl);
-    let date = new Date;
-    let formattedDate = date.toLocaleString('en-US');
-    let directoryDate = formattedDate.substring(0, formattedDate.indexOf(","));
-    let underscoreDate = directoryDate.replace(/\//g, '_');
-    let dirName = urlObj.host + '_' + underscoreDate;
+    let dirName = urlObj.host;
     if (urlObj.pathname !== "/") {
         dirName = dirName + urlObj.pathname.replace(/\//g, "_");
     }
@@ -17,12 +15,11 @@ async function asyncCall() {
         fs.mkdirSync(dirName);
     }
     let lhOpts = {
-        emulatedFormFactor: 'desktop',
         output: 'html',
         disableStorageReset: true
     }
 
-    const browser = await puppeteer.launch({ headless: true });
+    const browser = await puppeteer.launch({ headless: false });
     const page = await browser.newPage();
     await page.goto(siteUrl, {
         waitUntil: ['load']
@@ -30,7 +27,7 @@ async function asyncCall() {
 
 
     // run an initial lighthouse report for the login page before filling in form for authentication
-    let initialPageresult = await lighthouse(siteUrl, lhOpts, undefined, page);
+    let initialPageresult = await lighthouse(siteUrl, lhOpts, config, page);
     const lhr = initialPageresult.report;
     fs.writeFile(`${dirName}/login.html`, lhr, err => {
         if (err) {
@@ -65,7 +62,7 @@ async function asyncCall() {
     for (let i = 0; i < urlstoTest.length; i++) {
         console.log(urlstoTest[i])
         await page.goto(urlstoTest[i].url)
-        const result = await lighthouse(urlstoTest[i].url, lhOpts, undefined, page);
+        const result = await lighthouse(urlstoTest[i].url, lhOpts, config, page);
         const lhr = result.report;
         fs.writeFile(`${dirName}/${urlstoTest[i].pageName}.html`, lhr, err => {
             if (err) {
@@ -75,7 +72,20 @@ async function asyncCall() {
                 console.log(`${dirName}/${urlstoTest[i].pageName}.html written`)
                 if (urlstoTest.length - 1 === i) {
                     console.log('all lighthouse reports written')
-                    process.exit();
+                    let reportFiles = fs.readdirSync(dirName)
+                    var html = buildHtml(reportFiles);
+                    console.log('writing index.html')
+                    fs.writeFile('index.html', html, err => {
+                        if (err) {
+                            console.error(err);
+                        } else {
+                            // file written successfully
+                            console.log(html)
+                            console.log('index.html written')
+                            process.exit();
+                        }
+                    });
+
                 }
 
             }
