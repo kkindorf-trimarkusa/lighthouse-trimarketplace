@@ -63,7 +63,6 @@ async function asyncCall() {
         { pageName: 'pdp', url: "https://qa.trimarketplace.com/product-details/-/o/d/3-TIER-PRETZELTREE/ecom-item/10012764" },
         { pageName: 'shopping-cart', url: "https://qa.trimarketplace.com/shopping-cart" },
         { pageName: 'checkout-page', url: "https://qa.trimarketplace.com/checkout" }
-
     ]
 
 
@@ -80,6 +79,7 @@ async function asyncCall() {
                 console.error(err);
             }
             else {
+                // file written successfully
                 console.log(`${dirName}/${urlstoTest[i].pageName}.html written`)
 
                 if (urlstoTest.length - 1 === i) {
@@ -91,7 +91,7 @@ async function asyncCall() {
                         if (err) {
                             console.error(err);
                         } else {
-                            // file written successfully
+
                             console.log(html)
                             console.log('index.html written')
                             process.exit();
