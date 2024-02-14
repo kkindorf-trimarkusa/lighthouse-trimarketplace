@@ -54,7 +54,16 @@ async function asyncCall() {
 
     let urlstoTest = [
         { pageName: 'my-account', url: "https://qa.trimarketplace.com/my-account" },
-        { pageName: 'my-catalog', url: "https://qa.trimarketplace.com/mycatalog" }
+        { pageName: 'my-catalog', url: "https://qa.trimarketplace.com/mycatalog" },
+        { pageName: 'my-order-history', url: "https://qa.trimarketplace.com/my-order-history" },
+        { pageName: 'my-approvals', url: "https://qa.trimarketplace.com/myapprovals" },
+        { pageName: 'my-wishlist', url: "https://qa.trimarketplace.com/my-wishlists" },
+        { pageName: 'my-saved-carts', url: "https://qa.trimarketplace.com/my-saved-carts" },
+        { pageName: 'my-invoices', url: "https://qa.trimarketplace.com/invoices" },
+        { pageName: 'pdp', url: "https://qa.trimarketplace.com/product-details/-/o/d/3-TIER-PRETZELTREE/ecom-item/10012764" },
+        { pageName: 'shopping-cart', url: "https://qa.trimarketplace.com/shopping-cart" },
+        { pageName: 'checkout-page', url: "https://qa.trimarketplace.com/checkout" }
+
     ]
 
 
@@ -63,13 +72,16 @@ async function asyncCall() {
         console.log(urlstoTest[i])
         await page.goto(urlstoTest[i].url)
         const result = await lighthouse(urlstoTest[i].url, lhOpts, config, page);
+
         const lhr = result.report;
+
         fs.writeFile(`${dirName}/${urlstoTest[i].pageName}.html`, lhr, err => {
             if (err) {
                 console.error(err);
             }
             else {
                 console.log(`${dirName}/${urlstoTest[i].pageName}.html written`)
+
                 if (urlstoTest.length - 1 === i) {
                     console.log('all lighthouse reports written')
                     let reportFiles = fs.readdirSync(dirName)
