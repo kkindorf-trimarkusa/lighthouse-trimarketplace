@@ -1,7 +1,7 @@
 import lighthouse from 'lighthouse';
 import fs from 'fs';
 import puppeteer from 'puppeteer';
-let siteUrl = 'https://qa.trimarketplace.com';
+let siteUrl = 'https://prod.trimarketplace.com';
 import config from './config/desktop-config.js';
 import buildHtml from './build-html.js';
 
@@ -53,16 +53,16 @@ async function asyncCall() {
     console.log('finished login');
 
     let urlstoTest = [
-        { pageName: 'my-account', url: "https://qa.trimarketplace.com/my-account" },
-        { pageName: 'my-catalog', url: "https://qa.trimarketplace.com/mycatalog" },
-        { pageName: 'my-order-history', url: "https://qa.trimarketplace.com/my-order-history" },
-        { pageName: 'my-approvals', url: "https://qa.trimarketplace.com/myapprovals" },
-        { pageName: 'my-wishlist', url: "https://qa.trimarketplace.com/my-wishlists" },
-        { pageName: 'my-saved-carts', url: "https://qa.trimarketplace.com/my-saved-carts" },
-        { pageName: 'my-invoices', url: "https://qa.trimarketplace.com/invoices" },
-        { pageName: 'pdp', url: "https://qa.trimarketplace.com/product-details/-/o/d/3-TIER-PRETZELTREE/ecom-item/10012764" },
-        { pageName: 'shopping-cart', url: "https://qa.trimarketplace.com/shopping-cart" },
-        { pageName: 'checkout-page', url: "https://qa.trimarketplace.com/checkout" }
+        { pageName: 'my-account', url: "https://prod.trimarketplace.com/my-account" },
+        { pageName: 'my-catalog', url: "https://prod.trimarketplace.com/mycatalog" },
+        { pageName: 'my-order-history', url: "https://prod.trimarketplace.com/my-order-history" },
+        { pageName: 'my-approvals', url: "https://prod.trimarketplace.com/myapprovals" },
+        { pageName: 'my-wishlist', url: "https://prod.trimarketplace.com/my-wishlists" },
+        { pageName: 'my-saved-carts', url: "https://prod.trimarketplace.com/my-saved-carts" },
+        { pageName: 'my-invoices', url: "https://prod.trimarketplace.com/invoices" },
+        { pageName: 'pdp', url: "https://prod.trimarketplace.com/product-details/-/o/d/3-TIER-PRETZELTREE/ecom-item/10012764" },
+        { pageName: 'shopping-cart', url: "https://prod.trimarketplace.com/shopping-cart" },
+        { pageName: 'checkout-page', url: "https://prod.trimarketplace.com/checkout" }
     ]
 
 
