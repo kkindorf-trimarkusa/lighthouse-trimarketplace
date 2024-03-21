@@ -43,7 +43,6 @@ async function asyncCall() {
 
 
     //start authenticating to log into the site
-    await page.click('.cc-compliance')
     await page.type('.onpagelogin form .username-input', '1_pw_approver1@trimarkusa.com')
     await page.type('.onpagelogin form .password-input', 'Welcome1$')
     await Promise.all([
