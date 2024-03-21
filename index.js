@@ -59,7 +59,7 @@ async function asyncCall() {
         { pageName: 'my-wishlist', url: "https://prod.trimarketplace.com/my-wishlists" },
         { pageName: 'my-saved-carts', url: "https://prod.trimarketplace.com/my-saved-carts" },
         { pageName: 'my-invoices', url: "https://prod.trimarketplace.com/invoices" },
-        { pageName: 'pdp', url: "https://prod.trimarketplace.com/product-details/-/o/d/3-TIER-PRETZELTREE/ecom-item/10012764" },
+        { pageName: 'pdp', url: "https://prod.trimarketplace.com/product-details/-/o/d/9-X1075-12-ALUMINUM-SHEET/ecom-item/10016095" },
         { pageName: 'shopping-cart', url: "https://prod.trimarketplace.com/shopping-cart" },
         { pageName: 'checkout-page', url: "https://prod.trimarketplace.com/checkout" }
     ]
