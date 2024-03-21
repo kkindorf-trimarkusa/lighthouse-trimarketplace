@@ -1,5 +1,5 @@
 function buildHtml(reportFiles) {
-  let siteUrl = "https://kkindorf-trimarkusa.github.io/lighthouse-trimarketplace/qa.trimarketplace.com/"
+  let siteUrl = "https://kkindorf-trimarkusa.github.io/lighthouse-trimarketplace/prod.trimarketplace.com/"
   var body = '<h1>Trimarketplace Lighthouse reports</h1><ul>';
   for (var i = 0; i < reportFiles.length; i++) {
     let listItemString = '<li><a href=' + siteUrl + reportFiles[i] + '>' + reportFiles[i] + '</a></li>';
