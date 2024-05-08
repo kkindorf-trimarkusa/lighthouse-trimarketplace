@@ -5,9 +5,13 @@ let siteUrl = 'https://shop.trimarketplace.com/login';
 import config from './config/desktop-config.js';
 import buildHtml from './build-html.js';
 import buildNewDate from './build-new-date.js';
-let dirName = "https://shop.trimarketplace.com" + `-${buildNewDate()}`
 
 async function asyncCall() {
+    const urlObj = new URL(siteUrl);
+    let dirName = urlObj.host;
+    if (urlObj.pathname !== "/") {
+        dirName = dirName + urlObj.pathname.replace(/\//g, "_");
+    }
     if (!fs.existsSync(dirName)) {
         fs.mkdirSync(dirName);
     }
