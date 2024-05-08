@@ -2,6 +2,7 @@ import lighthouse from 'lighthouse';
 import fs from 'fs';
 import puppeteer from 'puppeteer';
 let siteUrl = 'https://shop.trimarketplace.com/login';
+let siteDomain = 'https://shop.trimarketplace.com/'
 import config from './config/desktop-config.js';
 import buildHtml from './build-html.js';
 import buildNewDate from './build-new-date.js';
