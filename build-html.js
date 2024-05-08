@@ -19,10 +19,6 @@ function buildHtml(reportFiles) {
       body += '</ul>'
     }
   }
-
-
-
-
   // concatenate body string
 
   return '<!DOCTYPE html>'
