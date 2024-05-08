@@ -2,13 +2,13 @@ import lighthouse from 'lighthouse';
 import fs from 'fs';
 import puppeteer from 'puppeteer';
 let siteUrl = 'https://shop.trimarketplace.com/login';
-let siteDomain = 'https://shop.trimarketplace.com/'
+let siteDomain = 'https://shop.trimarketplace.com'
 import config from './config/desktop-config.js';
 import buildHtml from './build-html.js';
 import buildNewDate from './build-new-date.js';
 
 async function asyncCall() {
-    const urlObj = new URL(siteUrl);
+    const urlObj = new URL(siteDomain);
     let dirName = urlObj.host;
     if (urlObj.pathname !== "/") {
         dirName = dirName + urlObj.pathname.replace(/\//g, "_");
