@@ -8,7 +8,7 @@ function buildHtml(reportFiles) {
   let firstHeading = '<h2>Trimarketplace Lighthouse reports for ' + `${currentFileDate}` + '</h2><ul>'
   let body = firstHeading;
   for (var i = 0; i < reportFiles.length; i++) {
-    if (currentFileData !== reportFiles[i].substring(reportFiles[i].indexOf('2'), reportFiles[i].indexOf('.html'))) {
+    if (currentFileDate !== reportFiles[i].substring(reportFiles[i].indexOf('2'), reportFiles[i].indexOf('.html'))) {
       currentFileDate = reportFiles[i].substring(reportFiles[i].indexOf('2'), reportFiles[i].indexOf('.html'))
       body += '</ul><h2>Trimarketplace Lighthouse reports for ' + `${currentFileDate}` + '</h2><ul>'
     }
