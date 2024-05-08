@@ -13,7 +13,7 @@ function buildHtml(reportFiles) {
       body += '</ul><h2>Trimarketplace Lighthouse reports for ' + `${currentFileDate}` + '</h2><ul>'
     }
 
-    let listItemString = '<li><a href=' + siteUrl + reportFiles[i] + ' target="_blank">' + reportFiles[i].substring(0, reportFiles[i].indexOf('2')) + '</a></li>';
+    let listItemString = '<li><a href=' + siteUrl + reportFiles[i] + ' target="_blank">' + reportFiles[i].substring(0, reportFiles[i].indexOf('-')) + '.html' + '</a></li>';
     body += listItemString
     if (reportFiles.length - 1 === i) {
       body += '</ul>'
