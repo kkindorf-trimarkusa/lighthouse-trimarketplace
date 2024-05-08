@@ -31,7 +31,7 @@ async function asyncCall() {
     // run an initial lighthouse report for the login page before filling in form for authentication
     let initialPageresult = await lighthouse(siteUrl, lhOpts, config, page);
     const lhr = initialPageresult.report;
-    fs.writeFile(`${dirName}/login.html`, lhr, err => {
+    fs.writeFile(`${dirName}/login-${buildNewDate()}.html`, lhr, err => {
         if (err) {
             console.error(err);
         }
