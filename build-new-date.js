@@ -1,5 +1,6 @@
 function buildNewDate() {
-    return new Date().toISOString()
+    let date = new Date().toISOString()
+    return date.substring(0, date.indexOf('T'));
 }
 
 export default buildNewDate;
