@@ -36,7 +36,7 @@ async function asyncCall() {
             console.error(err);
         }
         else {
-            console.log(`${dirName}/login.html written`)
+            console.log(`${dirName}/login-${buildNewDate()}.html written`)
         }
     });
     const selector = '.onpagelogin form .login-btn';
@@ -75,13 +75,13 @@ async function asyncCall() {
 
         const lhr = result.report;
 
-        fs.writeFile(`${dirName}/${urlstoTest[i].pageName}.html`, lhr, err => {
+        fs.writeFile(`${dirName}/${urlstoTest[i].pageName}-${buildNewDate()}.html`, lhr, err => {
             if (err) {
                 console.error(err);
             }
             else {
                 // file written successfully
-                console.log(`${dirName}/${urlstoTest[i].pageName}.html written`)
+                console.log(`${dirName}/${urlstoTest[i].pageName}-${buildNewDate()}.html written`)
 
                 if (urlstoTest.length - 1 === i) {
                     console.log('all lighthouse reports written')
