@@ -8,7 +8,8 @@ function buildHtml(reportFiles) {
   for (var i = 0; i < reportFiles.length; i++) {
     let obj = {
       number: reportFiles[i].substring(reportFiles[i].indexOf('2'), reportFiles[i].indexOf('.html')).replace(/-/g, ''),
-      fileName: reportFiles[i]
+      fileName: reportFiles[i],
+      fileDate: reportFiles[i].substring(reportFiles[i].indexOf('2'), reportFiles[i].indexOf('.html'))
     }
     fileObjects.push(obj)
   }
@@ -16,8 +17,8 @@ function buildHtml(reportFiles) {
   var sortedFileObjects = fileObjects.sort((a, b) => b.number - a.number);
   console.log(sortedFileObjects);
 
-  let currentFileDate = reportFiles[0].substring(reportFiles[0].indexOf('2'), reportFiles[0].indexOf('.html'));
-  let currentDateNumber = sortedFileObjects[0].number
+  let currentFileDate = sortedFileObjects[0].fileDate;
+  let currentDateNumber = sortedFileObjects[0].number;
 
   let firstHeading = '<h2>Trimarketplace Lighthouse reports for ' + `${currentFileDate}` + '</h2><ul>'
   let body = firstHeading;
@@ -25,7 +26,8 @@ function buildHtml(reportFiles) {
   for (var i = 0; i < sortedFileObjects.length; i++) {
 
     if (currentDateNumber !== sortedFileObjects[i].number) {
-      currentFileDate = sortedFileObjects[i].fileName.substring(sortedFileObjects[i].fileName.indexOf('2'), sortedFileObjects[i].fileName.indexOf('.html'))
+      currentDateNumber = sortedFileObjects[i].number
+      currentFileDate = sortedFileObjects[i].fileDate
       body += '</ul><h2>Trimarketplace Lighthouse reports for ' + `${currentFileDate}` + '</h2><ul>'
     }
 
