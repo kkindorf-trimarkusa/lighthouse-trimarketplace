@@ -32,12 +32,12 @@ async function asyncCall() {
     // run an initial lighthouse report for the login page before filling in form for authentication
     let initialPageresult = await lighthouse(siteUrl, lhOpts, config, page);
     const lhr = initialPageresult.report;
-    fs.writeFile(`${dirName}/login-${buildNewDate().replace(/-/g, '')}.html`, lhr, err => {
+    fs.writeFile(`${dirName}/login-${buildNewDate()}.html`, lhr, err => {
         if (err) {
             console.error(err);
         }
         else {
-            console.log(`${dirName}/login-${buildNewDate().replace(/-/g, '')}.html written`)
+            console.log(`${dirName}/login-${buildNewDate()}.html written`)
         }
     });
     const selector = '.onpagelogin form .login-btn';
@@ -76,13 +76,13 @@ async function asyncCall() {
 
         const lhr = result.report;
 
-        fs.writeFile(`${dirName}/${urlstoTest[i].pageName}-${buildNewDate().replace(/-/g, '')}.html`, lhr, err => {
+        fs.writeFile(`${dirName}/${urlstoTest[i].pageName}-${buildNewDate()}.html`, lhr, err => {
             if (err) {
                 console.error(err);
             }
             else {
                 // file written successfully
-                console.log(`${dirName}/${urlstoTest[i].pageName}-${buildNewDate().replace(/-/g, '')}.html written`)
+                console.log(`${dirName}/${urlstoTest[i].pageName}-${buildNewDate()}.html written`)
 
                 if (urlstoTest.length - 1 === i) {
                     console.log('all lighthouse reports written')
